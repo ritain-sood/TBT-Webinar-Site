@@ -1,0 +1,69 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background-color: #181818;
+}
+
+.cal-sans-regular {
+  font-family: "Cal Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sorts-mill-goudy {
+  font-family: "Sorts Mill Goudy", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sorts-mill-goudy-italic {
+  font-family: "Sorts Mill Goudy", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.sora-regular {
+  font-family: "Sora", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sora-regular-600 {
+  font-family: "Sora", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.gradient-border-container {
+    border-radius: 80px;
+    padding: 10px; /* This value acts as the border thickness */
+    background: linear-gradient(180deg, #EDD5BB 0%, #FFC484 100%);
+    z-index: 10;
+}
+
+.gradient-border-inner {
+    background: linear-gradient(180deg, #222222 0%, #888888 100%);
+    border-radius: 75px;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* For Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* For IE/old Edge */
+html {
+  -ms-overflow-style: none;
+}
