@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import Docs from "../../assets/icons/docs.svg";
 import TwoPerson from "../../assets/icons/twoPerson.svg";
@@ -12,29 +13,33 @@ const Button = ({ children, className = "" }) => (
   <button
     className={`group relative w-full py-4 px-8 rounded-full bg-[#FFC02B] text-[#212121] font-black text-lg overflow-hidden transition-all duration-300 ${className}`}
   >
-    {/* Animated background */}
     <span className="absolute top-0 left-0 h-full w-0 rounded-2xl bg-[#ffffff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
-    {/* Text and Icon */}
     <span className="relative z-10 flex justify-center items-center gap-2 group-hover:text-[#000000] transition-colors duration-300">
       {children} <FaChevronRight />
     </span>
   </button>
 );
 
-const HeroMain = ({ targetDate }) => {
-  const date = new Date(targetDate);
+const HeroMain = ({ webinarDate }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const formattedDate = date.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-  });
+  const features = [
+    { icon: VerifiedTick, text: "Winning Trade Setup Framework", alt: "Verified Tick" },
+    { icon: TwoPerson, text: "Access to Premium Trader Community", alt: "Community Icon" },
+    { icon: Live, text: "Live Trade Breakdown", alt: "Live Icon" },
+    { icon: Docs, text: "Free Guide: \"Master Risk Management\"", alt: "Document Icon" },
+  ];
 
-  const formattedTime = date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [features.length]);
 
+  const date = new Date(webinarDate);
+  const formattedDate = date.toLocaleDateString("en-GB", { day: "numeric", month: "long" });
+  const formattedTime = date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
   const finalDisplayDate = `${formattedDate}, ${formattedTime}`;
 
   return (
@@ -43,20 +48,18 @@ const HeroMain = ({ targetDate }) => {
       id="hero"
     >
       <div className="gradient-border-inner">
-        <div className="grid gap-0 items-center grid-cols-[42%_58%]">
-          <div className="h-full p-2">
+        {/* --- DESKTOP LAYOUT --- */}
+        <div className="hidden md:grid gap-0 items-center grid-cols-[42%_58%]">
+        <div className="h-full p-2">
             <img
               src={HeroSectionImg}
               alt="Anubrata Das, Founder of The Bengal Trader"
-              className="flex absolute h-[110%] object-cover -top-17.5 left-15"
+              className="flex absolute h-[110%] object-cover -top-18 left-15"
             />
           </div>
-
           <div className="p-6 md:p-10 flex flex-col gap-6 bg-black text-white rounded-r-[75px] justify-center items-center">
-
-            {/* Blur */}
-            <div
-              className="pointer-events-none absolute blur-[150px] z-1 justify-center hidden md:block"
+          <div
+              className="pointer-events-none absolute blur-[150px] z-1 justify-center hidden md:block -top-1"
               style={{
                 width: "241px",
                 height: "474px",
@@ -65,69 +68,69 @@ const HeroMain = ({ targetDate }) => {
                 opacity: 0.8,
               }}
             />
-            <div className="text-center">
-              <p className="sora-regular tracking-widest text-lg font-light">
-                THE TRADING BLUEPRINT BY
-              </p>
-              <h1 className="sorts-mill-goudy tracking-wide leading-relaxed text-4xl md:text-5xl font-bold">
-                ANUBRATA DAS
-              </h1>
-              <p className="sorts-mill-goudy tracking-wide text-lg">
-                Founder of The Bengal Trader
-              </p>
+            <div className="text-center relative z-10">
+              <p className="sora-regular tracking-widest text-lg font-light">THE TRADING BLUEPRINT BY</p>
+              <h1 className="sorts-mill-goudy tracking-wide leading-relaxed text-5xl font-bold">ANUBRATA DAS</h1>
+              <p className="sorts-mill-goudy tracking-wide text-lg">Founder of The Bengal Trader</p>
+            </div>
+            <div className="grid grid-cols-2 gap-4 text-white text-sm relative z-10">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-center gap-4 bg-[#222222] px-4 py-3 rounded-2xl h-full">
+                  <img src={feature.icon} alt={feature.alt} className="w-6 h-6 flex-shrink-0" />
+                  <span>{feature.text}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center sm:gap-8 gap-4 text-white border-t border-b border-gray-600 py-4 font-semibold relative z-10">
+              <div className="flex items-center gap-3"><img src={Calender} alt="Calendar" className="w-6 h-6" /><span>{finalDisplayDate}</span></div>
+              <div className="flex items-center gap-3"><img src={Clock} alt="Clock" className="w-6 h-6" /><span>Duration: 2 hours</span></div>
+            </div>
+            <div className="flex flex-col gap-3 relative z-10">
+              <p className="text-center text-white flex gap-3 font-semibold items-center justify-center"><img src={Team} alt="Zoom" className="w-8 h-8" />Live Session on Zoom</p>
+              <Button>Save My Seat</Button>
+            </div>
+          </div>
+        </div>
+
+        {/* --- MOBILE LAYOUT --- */}
+        <div className="md:hidden flex flex-col">
+          <div className="relative h-[22rem] w-full">
+            <img
+              src={HeroSectionImg}
+              alt="Anubrata Das"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain"
+            />
+          </div>
+          <div className="p-4 flex flex-col gap-6 bg-black text-white w-full rounded-b-[44px] items-center text-center">
+            <div className="text-center space-y-2 pt-4">
+              <p className="sora-regular tracking-widest text-sm font-light">THE TRADING BLUEPRINT BY</p>
+              <h1 className="sorts-mill-goudy tracking-wide leading-relaxed text-[32px] font-bold">ANUBRATA DAS</h1>
+              <p className="sorts-mill-goudy tracking-wide text-base">Founder of The Bengal Trader</p>
+            </div>
+            
+            <div className="w-[80%] h-[60px] relative overflow-hidden rounded-2xl">
+              <div
+                className="flex h-full transition-transform duration-700 ease-in-out "
+                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+              >
+                {features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#222222] px-4 flex-shrink-0 w-full h-full flex items-center justify-center gap-4 text-sm"
+                  >
+                    <img src={feature.icon} alt={feature.alt} className="w-6 h-6 flex-shrink-0" />
+                    <span>{feature.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-white sora-regular px-15 text-sm">
-              <div className="flex items-center gap-4 bg-[#222222] px-4 py-2 rounded-2xl h-full">
-                <img
-                  src={VerifiedTick}
-                  alt="Verified Tick"
-                  className="w-6 h-6 flex-shrink-0"
-                />
-                <span>Winning Trade Setup Framework</span>
-              </div>
-              <div className="flex items-center gap-4 bg-[#222222] px-4 py-2 rounded-2xl h-full">
-                <img
-                  src={TwoPerson}
-                  alt="Community Icon"
-                  className="w-6 h-6 flex-shrink-0"
-                />
-                <span>Access to Premium Trader Community</span>
-              </div>
-              <div className="flex items-center gap-4 bg-[#222222] px-4 py-2 rounded-2xl h-full">
-                <img
-                  src={Live}
-                  alt="Live Icon"
-                  className="w-6 h-6 flex-shrink-0"
-                />
-                <span>Live Trade Breakdown</span>
-              </div>
-              <div className="flex items-center gap-4 bg-[#222222] px-4 py-2 rounded-2xl h-full">
-                <img
-                  src={Docs}
-                  alt="Document Icon"
-                  className="w-6 h-6 flex-shrink-0"
-                />
-                <span>Free Guide: "Master Risk Management"</span>
-              </div>
+            <div className="flex flex-col gap-4 text-white font-semibold w-full items-center">
+              <div className="flex items-center gap-3"><img src={Calender} alt="Calendar" className="w-6 h-6" /><span>{finalDisplayDate}</span></div>
+              <div className="flex items-center gap-3"><img src={Clock} alt="Clock" className="w-6 h-6" /><span>Duration: 2 hours</span></div>
+              <div className="flex items-center gap-3"><img src={Team} alt="Zoom" className="w-8 h-8" /><span>Live Session on Zoom</span></div>
             </div>
-
-            <div className="flex flex-col sm:flex-row sm:gap-8 gap-4 text-white border-t border-b border-gray-600 py-4 font-semibold">
-              <div className="flex items-center gap-3">
-                <img src={Calender} alt="" className="w-6 h-6" />
-                <span>{finalDisplayDate}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <img src={Clock} alt="" className="w-6 h-6" />
-                <span>Duration: 2 hours</span>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <p className="text-center text-white flex gap-3 font-semibold items-center justify-center">
-                <img src={Team} alt="" className="w-8 h-8" />
-                Live Session on Zoom
-              </p>
+            <div className="w-full">
               <Button>Save My Seat</Button>
             </div>
           </div>

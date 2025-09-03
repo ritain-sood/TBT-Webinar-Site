@@ -5,9 +5,9 @@ import FeatureCards from "./FeatureCards";
 import HeroMain from "./HeroMain";
 import WebArrow from "../../assets/images/WebArrow.png";
 import chartBg from "../../assets/images/heroBg.png";
+import {WEBINAR_DATE} from "../../webinarDate.js";
 
 const HeroSection = () => {
-  const webinarDate = "2025-09-27T18:00:00"; // Format - YYYY-MM-DDTHH:MM:SS
 
   return (
     <section className="relative text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8">
@@ -23,18 +23,19 @@ const HeroSection = () => {
             opacity:0.20,
         }}
       />
-      <img src={chartBg} className="absolute object-contain -top-4" />
+      <img src={chartBg} className="absolute object-contain -top-4 hidden md:block" />
+      <img src={chartBg} className="absolute inset-0 object-cover  block md:hidden" style={{width:"1000px",height:"681px"}}/>
       <div className="w-full mx-auto flex flex-col items-center gap-6">
         <HeaderBadge />
         <HeroTitle />
         <img
           src={WebArrow}
           alt=""
-          className="absolute w-18 h-16 left-[38%] top-62"
+          className="absolute w-18 h-16 rotate-30 top-[17%] left-[10%] md:w-18 md:h-16 md:left-[38%] md:top-62 md:rotate-none"
         />
-        <CountdownTimer targetDate={webinarDate} />
+        <CountdownTimer webinarDate={WEBINAR_DATE} />
         <FeatureCards />
-        <HeroMain targetDate={webinarDate} />
+        <HeroMain webinarDate={WEBINAR_DATE} />
       </div>
     </section>
   );

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = ({ webinarDate }) => {
 
   const calculateTimeLeft = React.useCallback(() => {
-    const targetTime = new Date(targetDate).getTime();
+    const targetTime = new Date(webinarDate).getTime();
     const now = new Date().getTime();
     const distance = targetTime - now;
 
@@ -17,7 +17,7 @@ const CountdownTimer = ({ targetDate }) => {
       };
     }
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }, [targetDate]);
+  }, [webinarDate]);
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
