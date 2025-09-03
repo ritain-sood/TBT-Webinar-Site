@@ -3,7 +3,7 @@ import { FaChevronRight } from "react-icons/fa";
 import AndroidIcon from "../../assets/icons/footerAndroid.svg";
 import AppleIcon from "../../assets/icons/footerApple.svg";
 import YoutubeIcon from "../../assets/icons/footerYoutube.svg";
-import InstagramIcon from "../../assets/icons/footerInstagram.svg";
+import InstagramIcon from "../../assets/icons/footerInstagram.svg"
 
 const Footer = ({webinarDate}) => {
   const [isStickyBarVisible, setIsStickyBarVisible] = useState(true);
