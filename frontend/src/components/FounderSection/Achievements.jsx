@@ -41,7 +41,7 @@ const Achievements = () => {
   return (
     <div className="mt-8 space-y-6">
       {/* Desktop Layout */}
-      <div className="hidden lg:flex justify-center gap-7">
+      <div className="hidden md:flex justify-center gap-7">
         {achievements.slice(0, 3).map((item) => (
           <div key={item.id} className="flex items-center gap-2">
             <img src={item.icon} className="md:h-15 h-[34px]" alt={item.title} />
@@ -57,7 +57,7 @@ const Achievements = () => {
         ))}
       </div>
 
-      <div className="hidden lg:flex justify-center gap-7">
+      <div className="hidden md:flex justify-center gap-7">
         {achievements.slice(3, 5).map((item) => (
           <div key={item.id} className="flex items-center gap-2">
             <img src={item.icon} className="md:h-15 h-[34px]" alt={item.title} />
@@ -74,16 +74,16 @@ const Achievements = () => {
       </div>
 
       {/* Mobile Layout */}
-      <div className="grid grid-cols-2 gap-y-6 gap-x-6 lg:hidden">
+      <div className="grid grid-cols-2 gap-y-6 gap-x-3 md:hidden">
         {/* First row → 2 items */}
         {achievements.slice(0, 2).map((item) => (
-          <div key={item.id} className="flex items-center gap-2">
-            <img src={item.icon} className="h-[28px] sm:h-[32px]" alt={item.title} />
+          <div key={item.id} className="flex items-center gap-1 w-full">
+            <img src={item.icon} className="h-[28px]" alt={item.title} />
             <div>
-              <div className="font-serif text-[18px] text-[#FFC02B] leading-none">
+              <div className="font-serif text-[12px] text-[#FFC02B] leading-none">
                 {item.title}
               </div>
-              <div className="font-serif text-[14px] text-[#EAEAEA]">
+              <div className="font-serif text-[9px] text-[#EAEAEA]">
                 {item.subtitle}
               </div>
             </div>
@@ -92,13 +92,13 @@ const Achievements = () => {
 
         {/* Second row → 1 centered item */}
         <div className="col-span-2 flex justify-center">
-          <div className="flex items-center gap-2">
-            <img src={achievements[2].icon} className="h-[28px] sm:h-[32px]" alt={achievements[2].title} />
+          <div className="flex items-center gap-1">
+            <img src={achievements[2].icon} className="h-[28px]" alt={achievements[2].title} />
             <div>
-              <div className="font-serif text-[18px] text-[#FFC02B] leading-none">
+              <div className="font-serif text-[12px] text-[#FFC02B] leading-none">
                 {achievements[2].title}
               </div>
-              <div className="font-serif text-[14px] text-[#EAEAEA]">
+              <div className="font-serif text-[9px] text-[#EAEAEA]">
                 {achievements[2].subtitle}
               </div>
             </div>
@@ -107,13 +107,13 @@ const Achievements = () => {
 
         {/* Third row → 2 items */}
         {achievements.slice(3, 5).map((item) => (
-          <div key={item.id} className="flex items-center gap-2">
-            <img src={item.icon} className="h-[28px] sm:h-[32px]" alt={item.title} />
+          <div key={item.id} className="flex items-center gap-1">
+            <img src={item.icon} className="h-[28px]" alt={item.title} />
             <div>
-              <div className="font-serif text-[18px] text-[#FFC02B] leading-none">
+              <div className="font-serif text-[12px] text-[#FFC02B] leading-none">
                 {item.title}
               </div>
-              <div className="font-serif text-[14px] text-[#EAEAEA]">
+              <div className="font-serif text-[9px] text-[#EAEAEA]">
                 {item.subtitle}
               </div>
             </div>
