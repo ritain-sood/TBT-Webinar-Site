@@ -38,9 +38,9 @@ body {
   font-style: normal;
 }
 
-.gradient-border-container {
+/* .gradient-border-container {
     border-radius: 80px;
-    padding: 10px; /* This value acts as the border thickness */
+    padding: 10px;
     background: linear-gradient(180deg, #EDD5BB 0%, #FFC484 100%);
     z-index: 10;
 }
@@ -50,6 +50,34 @@ body {
     border-radius: 75px;
     width: 100%;
     height: 100%;
+} */
+
+/* --- Mobile Styles (default) --- */
+.gradient-border-container {
+  border-radius: 50px;
+  padding: 4px;
+  background: linear-gradient(180deg, #EDD5BB 0%, #FFC484 100%);
+  z-index: 10;
+}
+
+.gradient-border-inner {
+  background: linear-gradient(180deg, #222222 0%, #888888 100%);
+  border-radius: 46px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* --- Desktop Styles (for screens 768px and wider) --- */
+@media (min-width: 768px) {
+  .gradient-border-container {
+      border-radius: 80px;
+      padding: 10px;
+  }
+
+  .gradient-border-inner {
+      border-radius: 75px;
+  }
 }
 
 
