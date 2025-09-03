@@ -1,16 +1,18 @@
-import CTASection from "../components/CTASection/CTASection";
-import FAQSection from "../components/FAQs/FAQSection";
-import Footer from "../components/Footer/Footer";
-import FounderSection from "../components/FounderSection/FounderSection";
-import HeroSection from "../components/Hero/HeroSection";
-import LearnSection from "../components/LearnSection/LearnSection";
-import TestimonialsSection from "../components/TestimonialsSection/TestimonialsSection";
-import TransformationSection from "../components/TransformationSection/TransformationSection";
-import VideoShowcaseSection from "../components/VideoShowcase/VideoShowcaseSection";
+import CTASection from "../components/CTASection/CTASection.jsx";
+import FAQSection from "../components/FAQs/FAQSection.jsx";
+import Footer from "../components/Footer/Footer.jsx";
+import FounderSection from "../components/FounderSection/FounderSection.jsx";
+import HeroSection from "../components/Hero/HeroSection.jsx";
+import LearnSection from "../components/LearnSection/LearnSection.jsx";
+import TestimonialsSection from "../components/TestimonialsSection/TestimonialsSection.jsx";
+import TransformationSection from "../components/TransformationSection/TransformationSection.jsx";
+import VideoShowcaseSection from "../components/VideoShowcase/VideoShowcaseSection.jsx";
 import EllipseIcon from "../assets/images/Ellipse.png";
 import EllipseIcon1 from "../assets/images/Ellipse1.png";
+import {WEBINAR_DATE} from "../webinarDate.js";
 
 function App() {
+
   return (
     <div className="relative overflow-hidden">
       <HeroSection />
@@ -40,7 +42,7 @@ function App() {
       <VideoShowcaseSection />
       <TransformationSection />
       <div
-        className="w-full z-20 hidden md:block"
+        className="w-full z-20"
         style={{
           background:
             "linear-gradient(180deg, rgba(24,24,24,0) 52%, rgba(24,24,24,0.88) 77%, rgba(24,24,24,1) 93%)",
@@ -156,7 +158,7 @@ function App() {
           opacity: 0.17,
         }}
       />
-      <Footer />
+      <Footer webinarDate={WEBINAR_DATE}/>
     </div>
   );
 }
