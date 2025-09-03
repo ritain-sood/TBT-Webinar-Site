@@ -18,15 +18,15 @@ const Button = ({ children, className = "" }) => (
 
 const CTASection=()=>{
   return (
-    <section className="relative text-center py-20">
-      <div className="max-w-3xl mx-auto px-4">
+    <section className="relative text-center pb-20">
+      <div className="max-w-3xl mx-auto px-4 text-center">
         {/* Heading */}
-        <h2 className="cal-sans-regular text-center mb-8 text-white text-[40px] font-bold uppercase mx-auto tracking-wider leading-[3rem]">
+        <h2 className="cal-sans-regular text-center mb-8 text-white text-3xl md:text-[40px] font-bold uppercase mx-auto tracking-wider px-4 leading-[2rem] md:leading-[3rem]">
           READY TO TRANSFORM YOUR <br className="hidden md:block" /> <span className="text-[#FFC02B]">TRADING</span> GAME?
         </h2>
 
         {/* Subtext */}
-        <p className="text-white mb-10 text-lg sora-regular">
+        <p className="text-white mb-8 text-base md:text-lg w-[70%] md:w-full sora-regular mx-auto">
           Secure Your Seat Now And Start Seeing Your Trades In A New Light.
         </p>
 

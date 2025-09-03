@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
-import faqs from "./faqs"; // import from faqs.js
+import faqs from "./faqs";
 
 const FAQSection = () => {
-  // By default, nothing open
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -12,7 +11,7 @@ const FAQSection = () => {
 
   return (
     <section className="py-16 px-4" id="FAQs">
-      <h2 className="text-3xl cal-sans-regular text-center mb-16 text-white text-[40px] font-bold mx-auto tracking-wider">
+      <h2 className="cal-sans-regular text-center mb-16 text-white text-3xl md:text-[40px] font-bold uppercase mx-auto tracking-wider px-4">
         FREQUENTLY ASK <span className="text-[#FFC02B]">QUESTIONS</span>
       </h2>
 
@@ -28,21 +27,21 @@ const FAQSection = () => {
                 ${openIndex === index ? "bg-[#222]" : "hover:bg-[#222]"}`}
             >
               {/* Question Number + Text */}
-              <div className="flex items-center gap-6">
-                <span className="text-[#FFC02B] font-bold text-xl sora-regular">
+              <div className="flex items-center gap-6 w-full">
+                <span className="text-[#FFC02B] font-bold text-base md:text-xl sora-regular">
                   {faq.number}
                 </span>
-                <span className="text-white font-medium md:text-xl text-lg text-left sora-regular">
+                <span className="text-white font-medium text-base md:text-xl  text-left sora-regular">
                   {faq.question}
                 </span>
               </div>
 
               {/* Icon Button */}
-              <div className="w-10 h-10 flex items-center justify-center rounded-md hover:bg-[#1A1A1A] bg-[#333] transition-colors">
+              <div className="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center rounded-md hover:bg-[#1A1A1A] bg-[#333] transition-colors">
                 {openIndex === index ? (
-                  <Minus className="text-white" size={20} />
+                  <Minus className="text-white" size={16} />
                 ) : (
-                  <Plus className="text-white" size={20} />
+                  <Plus className="text-white" size={16} />
                 )}
               </div>
             </button>
@@ -53,7 +52,7 @@ const FAQSection = () => {
                 openIndex === index ? "max-h-96" : "max-h-0"
               }`}
             >
-              <p className="max-w-4xl text-white text-base leading-relaxed ml-[4rem] py-5 sora-regular">
+              <p className="max-w-4xl text-white text-sm md:text-base leading-relaxed ml-[4rem] py-5 pr-8 sora-regular">
                 {faq.answer}
               </p>
             </div>
