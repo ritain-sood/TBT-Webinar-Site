@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 const VideoShowcaseSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -39,6 +39,7 @@ const VideoShowcaseSection = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="w-full h-full object-cover"
+              loading="lazy"
             ></iframe>
             {/* Poster image overlay with a transition for a smoother disappearance */}
             <img 

@@ -30,7 +30,7 @@ const TestimonialsSection = () => {
   }, [activeIndex]);
 
   return (
-    <section className="pb-4">
+    <section className="py-16">
       <h2 className="cal-sans-regular text-center mb-16 text-white text-3xl md:text-[40px] font-bold uppercase mx-auto tracking-wider px-4">
         WHAT STUDENTS <span className="text-[#FFC02B]">SAY</span>
       </h2>

@@ -1,20 +1,20 @@
 import CTASection from "../components/CTASection/CTASection.jsx";
 import FAQSection from "../components/FAQs/FAQSection.jsx";
-import Footer from "../components/Footer/Footer.jsx";
 import FounderSection from "../components/FounderSection/FounderSection.jsx";
 import HeroSection from "../components/Hero/HeroSection.jsx";
 import LearnSection from "../components/LearnSection/LearnSection.jsx";
 import TestimonialsSection from "../components/TestimonialsSection/TestimonialsSection.jsx";
 import TransformationSection from "../components/TransformationSection/TransformationSection.jsx";
 import VideoShowcaseSection from "../components/VideoShowcase/VideoShowcaseSection.jsx";
+import Footer from "../components/Footer/Footer.jsx"
 import EllipseIcon from "../assets/images/Ellipse.png";
 import EllipseIcon1 from "../assets/images/Ellipse1.png";
 import {WEBINAR_DATE} from "../webinarDate.js";
 
-function App() {
+function WebinarPage() {
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-[#181818]">
       <HeroSection />
       <div className="absolute -left-[20%] top-[12%] hidden md:block">
         <img
@@ -163,4 +163,4 @@ function App() {
   );
 }
 
-export default App;
+export default WebinarPage;
