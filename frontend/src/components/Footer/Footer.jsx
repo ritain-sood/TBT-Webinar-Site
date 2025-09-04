@@ -49,7 +49,7 @@ const Footer = ({webinarDate}) => {
     }
 
     finalDisplayDate = `${getOrdinal(day)} ${month} - ${weekday} from ${time}`;
-    console.log(finalDisplayDate);
+    // console.log(finalDisplayDate);
   }
 
   return (

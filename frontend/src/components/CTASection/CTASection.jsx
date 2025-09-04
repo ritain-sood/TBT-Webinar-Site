@@ -18,7 +18,7 @@ const Button = ({ children, className = "" }) => (
 
 const CTASection=()=>{
   return (
-    <section className="relative text-center pb-20">
+    <section className="relative text-center pt-16 pb-20">
       <div className="max-w-3xl mx-auto px-4 text-center">
         {/* Heading */}
         <h2 className="cal-sans-regular text-center mb-8 text-white text-3xl md:text-[40px] font-bold uppercase mx-auto tracking-wider px-4 leading-[2rem] md:leading-[3rem]">
