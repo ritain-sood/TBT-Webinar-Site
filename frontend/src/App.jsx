@@ -1,15 +1,16 @@
-// import { useState } from 'react'
-import './App.css'
-
+import { Routes, Route } from 'react-router-dom';
 import WebinarPage from './pages/WebinarPage';
+import SuccessPage from './pages/SuccessPage';
 
 function App() {
-
   return (
-    <main className=''>
-      <WebinarPage/>
-    </main>
-  )
+    <>
+      <Routes>
+        <Route path="/" element={<WebinarPage />} />
+        <Route path="/success" element={<SuccessPage />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
