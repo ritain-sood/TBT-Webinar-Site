@@ -3,9 +3,12 @@ import { FaChevronRight } from "react-icons/fa";
 import AndroidIcon from "../../assets/icons/footerAndroid.svg";
 import AppleIcon from "../../assets/icons/footerApple.svg";
 import YoutubeIcon from "../../assets/icons/footerYoutube.svg";
-import InstagramIcon from "../../assets/icons/footerInstagram.svg"
+import InstagramIcon from "../../assets/icons/footerInstagram.svg";
+import { useModal } from "../hooks/useModal";
+
 
 const Footer = ({webinarDate}) => {
+  const { openModal } = useModal();
   const [isStickyBarVisible, setIsStickyBarVisible] = useState(true);
 
   useEffect(() => {
@@ -68,7 +71,7 @@ const Footer = ({webinarDate}) => {
           <div className="text-center text-black font-semibold text-base mb-4 leading-snug">
             Zoom Webinar is on {finalDisplayDate}
           </div>
-          <button className="bg-[#FFB800] hover:bg-[#e0a500] text-black font-semibold px-6 py-3 rounded-full w-full flex items-center justify-center gap-2 transition-colors shadow-md">
+          <button className="bg-[#FFB800] hover:bg-[#e0a500] text-black font-semibold px-6 py-3 rounded-full w-full flex items-center justify-center gap-2 transition-colors shadow-md" onClick={openModal}>
             Save My Seat{" "}
             <span className="relative z-10 flex justify-center items-center group-hover:text-[#000000] transition-colors duration-300 md:pl-2">
               <FaChevronRight />

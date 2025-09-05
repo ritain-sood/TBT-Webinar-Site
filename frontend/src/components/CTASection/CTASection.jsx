@@ -1,9 +1,15 @@
 // CTASection.jsx
 import { FaChevronRight } from "react-icons/fa";
+import { useModal } from "../hooks/useModal";
 
-const Button = ({ children, className = "" }) => (
+
+const CTASection=()=>{
+
+  const { openModal } = useModal();
+
+  const Button = ({ children, className = "" }) => (
     <button
-      className={`group relative w-[200px] sm:w-[220px] h-[55px] sm:h-[62px] flex justify-center items-center px-6 rounded-full bg-[#FFC02B] text-[#212121] font-bold text-lg overflow-hidden transition-all duration-300 shadow-[0_0_30px_#FFC02B] ${className}`}
+      className={`group relative w-[200px] sm:w-[220px] h-[55px] sm:h-[62px] flex justify-center items-center px-6 rounded-full bg-[#FFC02B] text-[#212121] font-bold text-lg overflow-hidden transition-all duration-300 shadow-[0_0_30px_#FFC02B] ${className}`} onClick={openModal}
     >
       {/* Animated background */}
       <span className="absolute top-0 left-0 h-full w-0 rounded-full bg-white transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -16,7 +22,7 @@ const Button = ({ children, className = "" }) => (
     </button>
   );
 
-const CTASection=()=>{
+
   return (
     <section className="relative text-center pt-16 pb-20">
       <div className="max-w-3xl mx-auto px-4 text-center">

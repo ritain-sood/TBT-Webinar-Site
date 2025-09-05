@@ -14,7 +14,7 @@ import {WEBINAR_DATE} from "../webinarDate.js";
 function WebinarPage() {
 
   return (
-    <div className="relative overflow-hidden bg-[#181818]">
+    <div className="relative overflow-hidden">
       <HeroSection />
       <div className="absolute -left-[20%] top-[12%] hidden md:block">
         <img
@@ -42,7 +42,7 @@ function WebinarPage() {
       <VideoShowcaseSection />
       <TransformationSection />
       <div
-        className="w-full z-20"
+        className="w-full z-90"
         style={{
           background:
             "linear-gradient(180deg, rgba(24,24,24,0) 52%, rgba(24,24,24,0.88) 77%, rgba(24,24,24,1) 93%)",

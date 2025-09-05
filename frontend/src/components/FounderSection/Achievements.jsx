@@ -74,7 +74,7 @@ const Achievements = () => {
       </div>
 
       {/* Mobile Layout */}
-      <div className="grid grid-cols-2 gap-y-6 gap-x-3 md:hidden">
+      <div className="relative z-5 grid grid-cols-2 gap-y-6 gap-x-3 md:hidden">
         {/* First row → 2 items */}
         {achievements.slice(0, 2).map((item) => (
           <div key={item.id} className="flex items-center gap-1 w-full">
