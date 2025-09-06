@@ -167,8 +167,8 @@ const Footer = ({webinarDate}) => {
 
         {/* Credits & Copyright */}
         <div className="text-center text-sm text-white flex flex-col gap-2">
-          {/* <p className="sora-regular">
-            Created with ❤️ by{" "}
+          <p className="sora-regular">
+            Created by{" "}
             <a
               href="mailto:contact@ritainsood.dev"
               target="_blank"
@@ -186,7 +186,7 @@ const Footer = ({webinarDate}) => {
               portfolio
             </a>
             .
-          </p> */}
+          </p>
           <p className="sora-regular">
             © Copyright {new Date().getFullYear()} -{" "}
             <a
