@@ -19,11 +19,11 @@ const FAQSection = () => {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border border-[#2A2A2A] rounded-md overflow-hidden"
+            className="border border-[#2A2A2A] rounded-md overflow-hidden faq-accordion safari-gpu-accel"
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className={`w-full flex justify-between items-center px-4 py-4 transition-colors 
+              className={`w-full flex justify-between items-center px-4 py-4 faq-button
                 ${openIndex === index ? "bg-[#222]" : "hover:bg-[#222]"}`}
             >
               {/* Question Number + Text */}
@@ -37,7 +37,7 @@ const FAQSection = () => {
               </div>
 
               {/* Icon Button */}
-              <div className="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center rounded-md hover:bg-[#1A1A1A] bg-[#333] transition-colors">
+              <div className="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center rounded-md hover:bg-[#1A1A1A] bg-[#333] faq-icon">
                 {openIndex === index ? (
                   <Minus className="text-white" size={16} />
                 ) : (
@@ -48,7 +48,7 @@ const FAQSection = () => {
 
             {/* Answer */}
             <div
-              className={`overflow-hidden transition-all duration-400 ${
+              className={`faq-accordion-content ${
                 openIndex === index ? "max-h-96" : "max-h-0"
               }`}
             >
