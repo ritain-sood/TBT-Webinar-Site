@@ -235,7 +235,7 @@ const PaymentModal = ({ isOpen, onClose }) => {
       if (!data.success) throw new Error(data.message);
 
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        key: import.meta.env.RAZORPAY_KEY_ID,
         amount: data.order.amount,
         currency: data.order.currency,
         name: "The Bengal Trader MasterClass",
