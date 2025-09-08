@@ -60,7 +60,7 @@ const Footer = ({webinarDate}) => {
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center gap-8">
         {/* Mobile Sticky Bar with conditional visibility */}
         <div
-          className={`md:hidden fixed bottom-0 left-0 w-full px-4 py-5 shadow-lg z-50 rounded-t-3xl transform transition-transform duration-500 ease-in-out ${
+          className={`md:hidden fixed bottom-0 left-0 w-full px-4 py-3 shadow-lg z-50 rounded-t-3xl transform transition-transform duration-500 ease-in-out ${
             isStickyBarVisible ? "translate-y-0" : "translate-y-full"
           }`}
           style={{
@@ -68,12 +68,12 @@ const Footer = ({webinarDate}) => {
               "linear-gradient(rgb(255, 227, 159) 0%, rgb(255, 216, 115) 100%)",
           }}
         >
-          <div className="text-center text-black font-semibold text-base mb-4 leading-snug">
+          <div className="text-center text-black font-semibold text-sm leading-snug mb-2">
             Zoom Webinar is on {finalDisplayDate}
           </div>
-          <button className="bg-[#FFB800] hover:bg-[#e0a500] text-black font-semibold px-6 py-3 rounded-full w-full flex items-center justify-center gap-2 transition-colors shadow-md" onClick={openModal}>
+          <button className="bg-[#FFB800] hover:bg-[#e0a500] text-sm text-black font-semibold w-full px-6 py-2 rounded-full flex items-center justify-center gap-2 transition-colors shadow-md" onClick={openModal}>
             Save My Seat{" "}
-            <span className="relative z-10 flex justify-center items-center group-hover:text-[#000000] transition-colors duration-300 md:pl-2">
+            <span className="relative z-10 text-sm flex justify-center items-center group-hover:text-[#000000] transition-colors duration-300">
               <FaChevronRight />
             </span>
           </button>
