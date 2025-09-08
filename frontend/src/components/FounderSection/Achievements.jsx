@@ -91,7 +91,7 @@ const Achievements = () => {
         ))}
 
         {/* Second row → 1 centered item */}
-        <div className="col-span-2 flex justify-center">
+        {/* <div className="col-span-2 flex justify-center">
           <div className="flex items-center gap-1">
             <img src={achievements[2].icon} className="h-[28px]" alt={achievements[2].title} />
             <div>
@@ -103,10 +103,10 @@ const Achievements = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Third row → 2 items */}
-        {achievements.slice(3, 5).map((item) => (
+        {achievements.slice(2, 4).map((item) => (
           <div key={item.id} className="flex items-center gap-1">
             <img src={item.icon} className="h-[28px]" alt={item.title} />
             <div>

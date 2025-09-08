@@ -62,7 +62,7 @@ const FounderSection = () => {
         />
       </div>
       <div
-        className="absolute w-full h-full z-0 block md:hidden bottom-[30%]"
+        className="absolute w-full h-full z-0 block md:hidden bottom-[24%]"
         style={{
           background:
             "linear-gradient(180deg, rgba(24,24,24,0) 52%, rgba(24,24,24,0.88) 77%, rgba(24,24,24,1) 93%)",
