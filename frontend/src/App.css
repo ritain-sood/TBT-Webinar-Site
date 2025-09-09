@@ -140,7 +140,7 @@ html {
 }
 
 /* Force hardware acceleration for Safari */
-.safari-gpu-accel {
+/* .safari-gpu-accel {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
@@ -148,4 +148,4 @@ html {
   -webkit-perspective: 1000px;
   perspective: 1000px;
   will-change: transform;
-}
+} */

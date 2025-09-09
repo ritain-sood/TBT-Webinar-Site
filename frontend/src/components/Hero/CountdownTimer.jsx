@@ -36,7 +36,7 @@ const CountdownTimer = ({ webinarDate }) => {
   const timeUnits = Object.entries(timeLeft);
 
   return (
-    <div className="flex items-center justify-center gap-2 md:gap-3 text-center">
+    <div className="flex items-center justify-center gap-2 md:gap-3 text-center z-10">
       {timeUnits.map(([label, value], index) => (
         <React.Fragment key={label}>
           {/* Box for the number */}
