@@ -1,3 +1,11 @@
+/* Safari mobile hero section fix */
+.hero-section-fix {
+  will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
 html {
   scroll-behavior: smooth;
 }

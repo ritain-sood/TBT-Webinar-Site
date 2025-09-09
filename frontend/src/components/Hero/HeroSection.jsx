@@ -10,7 +10,7 @@ import {WEBINAR_DATE} from "../../webinarDate.js";
 const HeroSection = () => {
 
   return (
-    <section className="relative text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+    <section className="relative text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8 hero-section-fix">
 
       {/* Blur */}
       <div
