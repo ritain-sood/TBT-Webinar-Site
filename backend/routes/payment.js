@@ -1,166 +1,67 @@
-// import express from "express";
-// import Razorpay from "razorpay";
-// import crypto from "crypto";
-// import dotenv from "dotenv";
-
-// dotenv.config();
-
-// const router = express.Router();
-
-// const verifiedTokens = new Set();
-
-// const razorpay = new Razorpay({
-//   key_id: process.env.RAZORPAY_KEY_ID,
-//   key_secret: process.env.RAZORPAY_KEY_SECRET,
-// });
-
-// router.post("/create-order", async (req, res) => {
-//   const { name, email, contact } = req.body;
-
-//   if (!name || !email || !contact) {
-//     return res.status(400).json({ success: false, message: "All fields are required." });
-//   }
-
-//   const options = {
-//     amount: 900, // ₹9.00 in paise
-//     currency: "INR",
-//     receipt: `receipt_order_${Date.now()}`,
-//     notes: { name, email, contact },
-//   };
-
-//   try {
-//     const order = await razorpay.orders.create(options);
-//     console.log("✅ Razorpay order response:", order);
-//     res.json({ success: true, order });
-//   } catch (err) {
-//     console.error("❌ Razorpay error object:", err);
-
-//     // If Razorpay returned a response, log it
-//     if (err?.response) {
-//       console.error("❌ Razorpay error response:", err.response);
-//     }
-
-//     res.status(500).json({
-//       success: false,
-//       message: err?.description || err?.error?.description || "Failed to create order",
-//     });
-//   }
-// });
-
-
-// // Verify payment
-// router.post("/verify-payment", (req, res) => {
-//   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-
-//   const body = razorpay_order_id + "|" + razorpay_payment_id;
-//   const expectedSignature = crypto
-//     .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-//     .update(body.toString())
-//     .digest("hex");
-
-//   if (expectedSignature !== razorpay_signature) {
-//     return res.status(400).json({ success: false, message: "Invalid payment signature." });
-//   }
-
-//   // Payment verified, generate token for success page
-//   const token = crypto.randomBytes(16).toString("hex");
-//   // Store token for verification
-// verifiedTokens.add(token);
-//   res.json({ success: true, redirectUrl: `/success?token=${token}` });
-// });
-
-
-// // Verify token (for SuccessPage)
-// router.post("/verify-token", (req, res) => {
-//   const { token } = req.body;
-//   if (!token) return res.status(400).json({ success: false, message: "Token is required" });
-
-//   if (verifiedTokens.has(token)) {
-//     // Token valid, optionally remove it if one-time use
-//     verifiedTokens.delete(token);
-//     return res.json({ success: true });
-//   } else {
-//     return res.status(400).json({ success: false, message: "Invalid or expired token" });
-//   }
-// });
-
-// export default router;
-
-
 import express from "express";
 import crypto from "crypto";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
+// Excel export dependencies
+import { writeFileSync } from "fs";
+import path from "path";
+import { Parser } from "json2csv";
 
 dotenv.config();
 
 const router = express.Router();
 
-const RAZORPAY_BASE = "https://api.razorpay.com/v1";
+// MongoDB User schema
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, unique: true },
+  contact: { type: String, unique: true },
+});
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
-// Helper to create basic auth header
-const getAuthHeader = () => {
-  const key = process.env.RAZORPAY_KEY_ID;
-  const secret = process.env.RAZORPAY_KEY_SECRET;
-  const base64 = Buffer.from(`${key}:${secret}`).toString("base64");
-  return `Basic ${base64}`;
-};
-
-// Create order
+// Create order (store registration in MongoDB, no orderId)
 router.post("/create-order", async (req, res) => {
-  const { name, email, contact, amount = 900, currency = "INR" } = req.body;
+  const { name, email, contact } = req.body;
 
   if (!name || !email || !contact) {
     return res.status(400).json({ success: false, message: "All fields are required" });
   }
 
   try {
-    const response = await fetch(`${RAZORPAY_BASE}/orders`, {
-      method: "POST",
-      headers: {
-        Authorization: getAuthHeader(),
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        amount,
-        currency,
-        receipt: `receipt_order_${Date.now()}`,
-        notes: { name, email, contact },
-      }),
-    });
-
-    const order = await response.json();
-
-    if (!response.ok) {
-      return res.status(response.status).json({ success: false, message: order.error?.description || "Failed to create order" });
+    // Check for existing user
+    const existing = await User.findOne({ $or: [{ email }, { contact }] });
+    if (existing) {
+      return res.status(400).json({ success: false, message: "User already registered with this email or contact." });
     }
 
-    res.json({ success: true, order });
+    // Store in MongoDB
+    const user = new User({ name, email, contact });
+    await user.save();
+
+    // Return success
+    res.json({ success: true, user: { name, email, contact } });
   } catch (error) {
-    console.error("Razorpay REST API error:", error);
-    res.status(500).json({ success: false, message: "Failed to create order" });
+    console.error("MongoDB error:", error);
+    res.status(500).json({ success: false, message: "Failed to register" });
   }
 });
 
-// Verify payment
+// Verify payment (generate token for redirect, no orderId)
 router.post("/verify-payment", async (req, res) => {
-  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+  const { email, contact } = req.body;
 
-  if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-    return res.status(400).json({ success: false, message: "Payment details missing" });
+  if (!email && !contact) {
+    return res.status(400).json({ success: false, message: "Email or contact required" });
   }
 
   try {
-    // Generate signature and verify
-    const body = razorpay_order_id + "|" + razorpay_payment_id;
-    const expectedSignature = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-      .update(body)
-      .digest("hex");
-
-    if (expectedSignature !== razorpay_signature) {
-      return res.status(400).json({ success: false, message: "Invalid payment signature" });
+    // Check if user exists
+    const user = await User.findOne({ $or: [{ email }, { contact }] });
+    if (!user) {
+      return res.status(400).json({ success: false, message: "User not found" });
     }
 
-    // Payment verified
+    // Generate token for redirect
     const token = crypto.randomBytes(16).toString("hex");
     res.json({ success: true, redirectUrl: `/success?token=${token}` });
   } catch (error) {
@@ -168,5 +69,27 @@ router.post("/verify-payment", async (req, res) => {
     res.status(500).json({ success: false, message: "Payment verification failed" });
   }
 });
+
+
+// GET endpoint to export all registered users as Excel (CSV)
+// router.get("/export-registrations", async (req, res) => {
+//   try {
+//     const users = await User.find({}, { _id: 0, name: 1, email: 1, contact: 1 });
+//     if (!users.length) return res.status(404).json({ success: false, message: "No registrations found" });
+
+//     // Convert to CSV
+//     const fields = ["name", "email", "contact"];
+//     const parser = new Parser({ fields });
+//     const csv = parser.parse(users);
+
+//     // Set headers for download
+//     res.header("Content-Type", "text/csv");
+//     res.attachment("registrations.csv");
+//     return res.send(csv);
+//   } catch (error) {
+//     console.error("Export error:", error);
+//     res.status(500).json({ success: false, message: "Failed to export registrations" });
+//   }
+// });
 
 export default router;

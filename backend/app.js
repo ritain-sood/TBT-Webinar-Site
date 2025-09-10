@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import paymentRoutes from './routes/payment.js';
 import dotenv from 'dotenv';
+import connectDB from './config/db.js';
 
 dotenv.config();
 
@@ -15,6 +16,9 @@ app.use(cors({
   allowedHeaders: ['Content-Type'],
   credentials: true
 }));
+
+// MongoDB
+connectDB();
 
 app.use(bodyParser.json());
 
