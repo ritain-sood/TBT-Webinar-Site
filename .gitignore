@@ -25,3 +25,4 @@ dist-ssr
 *.sw?
 backend/.env
 frontend/.env
+backend/routes/pay.js
