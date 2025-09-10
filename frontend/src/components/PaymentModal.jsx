@@ -36,48 +36,33 @@ const PaymentModal = ({ isOpen, onClose }) => {
 
     setLoading(true);
     try {
+      // Register user
       const res = await fetch(`${API_BASE_URL}/api/create-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, amount: 900, currency: "INR" }),
+        body: JSON.stringify(formData),
         credentials: "include",
       });
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
 
-      const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-        amount: data.order.amount,
-        currency: data.order.currency,
-        name: "The Bengal Trader MasterClass",
-        description: "Secure Your Seat",
-        order_id: data.order.id,
-        prefill: formData,
-        theme: { color: "#FFC02B" },
-        handler: async (response) => {
-          const verifyRes = await fetch(`${API_BASE_URL}/api/verify-payment`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(response),
-          });
-          const verifyData = await verifyRes.json();
-          if (verifyData.success){
-            onClose();
-             navigate(verifyData.redirectUrl);}
-          else setError("Payment verification failed");
-        },
-      };
-
-      const rzp = new window.Razorpay(options);
-      rzp.open();
-      rzp.on("payment.failed", (res) => {
-        setError(`Payment failed: ${res.error.description}`);
-        setLoading(false);
+      // Verify registration and redirect
+      const verifyRes = await fetch(`${API_BASE_URL}/api/verify-payment`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email, contact: formData.contact }),
       });
+      const verifyData = await verifyRes.json();
+      if (verifyData.success) {
+        onClose();
+        navigate(verifyData.redirectUrl);
+      } else {
+        setError("Verification failed");
+      }
     } catch (err) {
       setError(err.message || "Unexpected error");
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   if (!isOpen) return null;
