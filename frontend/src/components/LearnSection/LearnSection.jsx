@@ -39,27 +39,27 @@ const ChevronRight = (props) => (
 
 const learnItems = [
   {
-    title: "Daily Profit Blueprint 🚀",
+    title: "Consistent Trading Routine",
     description:
-      "Learn the exact trade setups I rely on every single day — clear rules for entries, smart exits, and a proven system for building consistent profits without guesswork.",
+      "Learn the step-by-step process Institutes follow every day — clear entries, disciplined exits, and a simple structure that removes guesswork and builds long-term consistency.",
     image: Laptop1,
   },
   {
-    title: "Master the Art of Risk ⚔",
+    title: "The Discipline of Risk Control",
     description:
-      "Turn risk into your ultimate edge. Discover how to safeguard your capital, cut losses before they grow, and build the confidence to stay in the market for the long run.",
+      "Protecting your capital is the first rule of trading. Learn how to manage losses before they grow, safeguard your money with discipline, and build the confidence to stay in the markets for the long run.",
     image: Laptop2,
   },
   {
-    title: "Mind Over Markets 🧠",
+    title: "Mind Over Markets",
     description:
-      "The toughest battles aren’t on the charts — they’re in the mind. Learn how to control fear, greed, and doubt, and develop the discipline that separates winning traders from the rest.",
+      "The hardest part of trading isn’t reading charts — it’s controlling your own mind. Learn how to master fear, greed, and doubt, and build the discipline that keeps traders consistent for life.",
     image: Laptop1,
   },
   {
-    title: "Chart Reading Secrets 🔎",
+    title: "Chart Reading Secrets",
     description:
-      "Go beyond the basics of technical analysis. Understand price action like a pro, spot high-probability trades, and uncover opportunities in the market before the crowd sees them.",
+      "Go beyond surface-level patterns. Understand price action with clarity, spot reliable trade setups, and uncover opportunities the crowd often misses.",
     image: Laptop2,
   },
 ];

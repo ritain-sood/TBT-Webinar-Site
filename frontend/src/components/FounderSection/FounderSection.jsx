@@ -19,8 +19,11 @@ const FounderSection = () => {
         </h2>
         {/* Divider */}
         <div className="w-[180px] md:w-[160px] h-0 border-b border-[#373737] md:mx-auto"></div>
-        <div className="text-[#EAEAEA] text-base md:text-xl sorts-mill-goudy md:text-center tracking-wider py-2">
-          Founder of TradeScribe
+        <div className="text-[#EAEAEA] text-base md:text-xl sorts-mill-goudy md:text-center tracking-wider py-2 hidden md:block">
+          Founder of The Bengal Trader & TradeScribe
+        </div>
+        <div className="text-[#EAEAEA] text-base md:text-xl sorts-mill-goudy md:text-center tracking-wider py-2 block md:hidden">
+          Founder of The Bengal Trader
         </div>
         {/* Divider */}
         <div className="w-[180px] md:w-[160px] h-0 border-t border-[#373737] md:mx-auto"></div>
@@ -32,10 +35,10 @@ const FounderSection = () => {
 
         {/* Bio */}
         <p className="relative z-10 text-white sorts-mill-goudy text-sm md:text-base leading-[1.8] mb-10 text-left md:text-center tracking-wider">
-          I believe trading success isn’t luck — it’s discipline, clarity, and
-          strategy. As a SEBI-certified RA and mentor to thousands, I’ve made it
-          my mission to help everyday traders to think, act, and trade
-          like&nbsp;institutions.
+          “A trader’s real victory isn’t in catching every move of the market —
+          it’s in mastering patience, protecting capital, and creating freedom
+          that lasts beyond the charts.”<br/> "Remember - Fast Success builds Ego,
+          Slow Success Builds Character"
         </p>
 
         {/* Social Buttons */}

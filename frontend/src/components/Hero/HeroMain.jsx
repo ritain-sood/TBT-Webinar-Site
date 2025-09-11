@@ -6,11 +6,12 @@ import VerifiedTick from "../../assets/icons/verifiedTick.svg";
 import Live from "../../assets/icons/live.svg";
 import Team from "../../assets/icons/team.svg";
 import Calender from "../../assets/icons/calender.svg";
-import Clock from "../../assets/icons/clock.svg";
+// import Clock from "../../assets/icons/clock.svg";
+import Coin from "../../assets/icons/Coin.svg";
 import HeroSectionImg from "../../assets/images/HeroSectionImg.png";
 import { useModal } from "../hooks/useModal";
 
-const HeroMain = ({ webinarDate }) => {
+const HeroMain = ({ webinarDate, className}) => {
   const { openModal } = useModal();
 
   const Button = ({ children, className = "" }) => (
@@ -35,10 +36,11 @@ const HeroMain = ({ webinarDate }) => {
     },
     {
       icon: TwoPerson,
-      text: "Access to Premium Trader Community",
+      text: "Learn to Trade With Institutes",
       alt: "Community Icon",
     },
-    { icon: Live, text: "Live Trade Breakdown", alt: "Live Icon" },
+    { icon: Live, text: "Live Trade Breakdown", 
+      alt: "Live Icon" },
     {
       icon: Docs,
       text: 'Free Guide: "Master Risk Management"',
@@ -67,10 +69,9 @@ const HeroMain = ({ webinarDate }) => {
 
   return (
     <div
-      className="relative gradient-border-container mt-6 w-full max-w-6xl"
-      id="hero"
+      className={`relative gradient-border-container mt-6 w-full max-w-6xl ${className}`} id="hero"
     >
-      <div className="gradient-border-inner">
+      <div className="gradient-border-inner bg-gradient-to-br from-[#FFD369] to-[#FFB800] shadow-[0_0_20px_#FFD369] md:shadow-[0_0_30px_#FFD369]">
         {/* --- DESKTOP LAYOUT --- */}
         <div className="hidden md:grid gap-0 items-center grid-cols-[42%_58%]">
           <div className="h-full p-2">
@@ -98,8 +99,11 @@ const HeroMain = ({ webinarDate }) => {
               <h1 className="sorts-mill-goudy tracking-wide leading-relaxed text-5xl font-bold">
                 ANUBRATA DAS
               </h1>
-              <p className="sorts-mill-goudy tracking-wide text-lg">
+              <p className="sorts-mill-goudy tracking-wide text-lg block md:hidden">
                 Founder of The Bengal Trader
+              </p>
+              <p className="sorts-mill-goudy tracking-wider text-lg hidden md:block">
+                Founder of The Bengal Trader & TradeScribe
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 text-white text-sm relative z-10">
@@ -123,14 +127,16 @@ const HeroMain = ({ webinarDate }) => {
                 <span>{finalDisplayDate}</span>
               </div>
               <div className="flex items-center gap-3">
-                <img src={Clock} alt="Clock" className="w-6 h-6" />
-                <span>Duration: 2 hours</span>
+                {/* <img src={Clock} alt="Clock" className="w-6 h-6" />
+                <span>Duration: 2 hours</span> */}
+                <img src={Team} alt="Zoom" className="w-8 h-8" />
+                Live Session on Zoom
               </div>
             </div>
             <div className="flex flex-col gap-3 relative z-10">
-              <p className="text-center text-white flex gap-3 font-semibold items-center justify-center">
-                <img src={Team} alt="Zoom" className="w-8 h-8" />
-                Live Session on Zoom
+              <p className="text-center text-white flex gap-3 text-lg font-semibold items-center justify-center">
+                <img src={Coin} alt="Coin" className="w-6 h-6" />
+                <strike>₹999</strike> - Zero For Today Only /-
               </p>
               <Button>Save My Seat</Button>
             </div>
@@ -186,12 +192,14 @@ const HeroMain = ({ webinarDate }) => {
                 <span>{finalDisplayDate}</span>
               </div>
               <div className="flex items-center gap-3">
-                <img src={Clock} alt="Clock" className="w-6 h-6" />
-                <span>Duration: 2 hours</span>
-              </div>
-              <div className="flex items-center gap-3">
+                {/* <img src={Clock} alt="Clock" className="w-6 h-6" />
+                <span>Duration: 2 hours</span> */}
                 <img src={Team} alt="Zoom" className="w-8 h-8" />
                 <span>Live Session on Zoom</span>
+              </div>
+              <div className="flex items-center gap-3">
+               <img src={Coin} alt="Coin" className="w-6 h-6" />
+                <strike>₹999</strike> - Zero For Today Only /-
               </div>
             </div>
             <div className="w-full">

@@ -69,7 +69,7 @@ const Footer = ({webinarDate}) => {
           }}
         >
           <div className="text-center text-black font-semibold text-sm leading-snug mb-2">
-            Zoom Webinar is on {finalDisplayDate}
+            Webinar Access: <strike>₹999</strike> - Zero Today <br/> {finalDisplayDate}
           </div>
           <button className="bg-[#FFB800] hover:bg-[#e0a500] text-sm text-black font-semibold w-full px-6 py-2 rounded-full flex items-center justify-center gap-2 transition-colors shadow-md" onClick={openModal}>
             Save My Seat{" "}

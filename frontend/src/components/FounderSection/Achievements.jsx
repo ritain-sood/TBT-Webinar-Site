@@ -26,14 +26,14 @@ const achievements = [
   {
     id: 4,
     icon: Ach4,
-    title: "Founder",
-    subtitle: "The Bengal Trader",
+    title: "Creator - TBT Community",
+    subtitle: "India’s #1 Trading Network",
   },
   {
     id: 5,
     icon: Ach5,
-    title: "Mentor",
-    subtitle: "100+ Institutions",
+    title: "⁠Int. Level Trainer",
+    subtitle: "Guided traders across India",
   },
 ];
 

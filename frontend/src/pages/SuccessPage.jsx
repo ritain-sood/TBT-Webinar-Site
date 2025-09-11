@@ -15,7 +15,7 @@ const SuccessPage = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-[#212121] text-white px-4 text-center">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#FFC02B]">
-        🎉 Payment Successful!
+        🎉 Registeration Successful!
       </h1>
       <p className="text-lg md:text-xl mb-4">Thank you for securing your seat!</p>
       <p className="mb-8">Click below to join the exclusive WhatsApp group:</p>

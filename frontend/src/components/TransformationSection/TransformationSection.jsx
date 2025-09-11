@@ -21,17 +21,17 @@ const TransformationSection = () => {
   const features = [
     {
       title: 'Real Trade Analysis',
-      description: 'Watch Smit break down trades step-by-step with clarity.',
+      description: 'Learn To Breakdown A Trade With SMT Analysis & stay ahead from 99%.',
       isHighlighted: false,
     },
     {
       title: 'Proven Strategies',
-      description: 'Get frameworks that real traders use to win consistently.',
+      description: 'Get frameworks that Institutions use to win consistently.',
       isHighlighted: true,
     },
     {
-      title: 'Resources',
-      description: 'Receive exclusive PDFs, templates & trading tools post-session.',
+      title: 'Live Q&A Access',
+      description: 'Get your trading questions answered directly in the live session.',
       isHighlighted: false,
     },
   ];

@@ -16,7 +16,7 @@ function WebinarPage() {
   return (
     <div className="relative overflow-hidden">
       <HeroSection />
-      <div className="absolute -left-[20%] top-[12%] hidden md:block">
+      <div className="absolute -left-[20%] top-[12%] hidden md:block -z-5">
         <img
           src={EllipseIcon}
           style={{
@@ -39,7 +39,7 @@ function WebinarPage() {
         }}
       />
 
-      <VideoShowcaseSection />
+      <VideoShowcaseSection className="hidden md:flex"/>
       <TransformationSection />
       <div
         className="w-full z-90"
@@ -65,7 +65,7 @@ function WebinarPage() {
       />
 
       {/* Left Side Ellipse Shape */}
-      <div className="absolute -left-[10%] top-[35%] hidden md:block">
+      <div className="absolute -left-[10%] top-[35%] hidden md:block -z-5">
         <img
           src={EllipseIcon1}
           style={{
