@@ -144,6 +144,7 @@ const VideoShowcaseSection = ({ className }) => {
             className="w-full h-full object-cover"
             playsInline
             controls
+            poster="https://res.cloudinary.com/diqmmch5o/video/upload/so_39.5/v1757497702/lv_0_20250828142414_1_pkuphp.jpg"
           />
           {/* Play Icon Overlay for Desktop */}
           <img

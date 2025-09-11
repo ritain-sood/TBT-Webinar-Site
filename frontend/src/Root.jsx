@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { ModalProvider } from "./context/ModalProvider.jsx";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Loader from "./components/Loader.jsx";
 
 function Root() {
   const [loading, setLoading] = useState(true);
@@ -29,12 +29,8 @@ function Root() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center w-screen h-screen bg-black">
-        <DotLottieReact
-          src="https://lottie.host/dc85f867-1f56-4b63-a595-bd46ad92096f/QYWvxiwtZE.lottie"
-          loop
-          autoplay
-        />
+      <div className="flex items-center justify-center w-screen h-screen">
+        <Loader />
       </div>
     );
   }
