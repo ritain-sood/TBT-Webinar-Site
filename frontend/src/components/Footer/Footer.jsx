@@ -6,32 +6,32 @@ import YoutubeIcon from "../../assets/icons/footerYoutube.svg";
 import InstagramIcon from "../../assets/icons/footerInstagram.svg";
 import { useModal } from "../hooks/useModal";
 
-
-const Footer = ({webinarDate}) => {
+const Footer = ({ webinarDate }) => {
   const { openModal } = useModal();
   const [isStickyBarVisible, setIsStickyBarVisible] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      // Handle division by zero if totalHeight is 0
-      const scrollPercentage =
-        totalHeight > 0 ? (scrollPosition / totalHeight) * 100 : 0;
+    let scrollTimeout;
 
-      if (scrollPercentage > 12) {
-        setIsStickyBarVisible(false);
-      } else {
+    const handleScroll = () => {
+      
+      // hide immediately
+      setIsStickyBarVisible(false);
+
+      // clear previous timer
+      clearTimeout(scrollTimeout);
+
+      // show bar again
+      scrollTimeout = setTimeout(() => {
         setIsStickyBarVisible(true);
-      }
+      }, 500);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Cleanup the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
     };
   }, []);
 
@@ -42,14 +42,20 @@ const Footer = ({webinarDate}) => {
     const day = date.toLocaleDateString("en-GB", { day: "numeric" });
     const month = date.toLocaleDateString("en-GB", { month: "long" });
     const weekday = date.toLocaleDateString("en-GB", { weekday: "long" });
-    const time = date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true }).toLowerCase();
-    
+    const time = date
+      .toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      })
+      .toLowerCase();
+
     // Function to add ordinal suffix (st, nd, rd, th)
     const getOrdinal = (n) => {
-        const s = ["th", "st", "nd", "rd"];
-        const v = n % 100;
-        return n + (s[(v - 20) % 10] || s[v] || s[0]);
-    }
+      const s = ["th", "st", "nd", "rd"];
+      const v = n % 100;
+      return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    };
 
     finalDisplayDate = `${getOrdinal(day)} ${month} - ${weekday} from ${time}`;
     // console.log(finalDisplayDate);
@@ -69,9 +75,13 @@ const Footer = ({webinarDate}) => {
           }}
         >
           <div className="text-center text-black font-semibold text-sm leading-snug mb-2">
-            Webinar Access: <strike>₹999</strike> - Zero Today <br/> {finalDisplayDate}
+            Webinar Access: <strike>₹999</strike> - Zero Today <br />{" "}
+            {finalDisplayDate}
           </div>
-          <button className="bg-[#FFB800] hover:bg-[#e0a500] text-sm text-black font-semibold w-full px-6 py-2 rounded-full flex items-center justify-center gap-2 transition-colors shadow-md" onClick={openModal}>
+          <button
+            className="bg-[#FFB800] hover:bg-[#e0a500] text-sm text-black font-semibold w-full px-6 py-2 rounded-full flex items-center justify-center gap-2 transition-colors shadow-md"
+            onClick={openModal}
+          >
             Save My Seat{" "}
             <span className="relative z-10 text-sm flex justify-center items-center group-hover:text-[#000000] transition-colors duration-300">
               <FaChevronRight />

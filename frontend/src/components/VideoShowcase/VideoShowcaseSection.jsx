@@ -91,22 +91,23 @@ const VideoShowcaseSection = ({ className }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    setIsPlaying(true);
-    if (videoRef.current) {
-      videoRef.current.muted = false;
-      videoRef.current.play();
-    }
+  // Desktop click to toggle play
+  const handleClick = () => {
+    setIsPlaying((prev) => {
+      const next = !prev;
+      if (videoRef.current) {
+        if (next) {
+          videoRef.current.muted = false;
+          videoRef.current.play();
+        } else {
+          videoRef.current.pause();
+        }
+      }
+      return next;
+    });
   };
 
-  const handleMouseLeave = () => {
-    setIsPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
-
-  // Mobile touch: tap to play/pause
+  // Mobile tap-to-play (you already had this)
   const handleTouch = () => {
     setIsPlaying((prev) => {
       const next = !prev;
@@ -129,13 +130,14 @@ const VideoShowcaseSection = ({ className }) => {
       {/* Video Box */}
       <div
         className="relative w-full md:w-[610px] md:h-[620px] rounded-[20px] p-[4px] 
-               bg-gradient-to-br from-[#FFD369] to-[#FFB800] shadow-[0_0_30px_#FFD369] 
-               order-1 md:order-1"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouch}
+                   bg-gradient-to-br from-[#FFD369] to-[#FFB800] shadow-[0_0_30px_#FFD369] 
+                   order-1 md:order-1"
+        onTouchStart={handleTouch} // mobile only
       >
-        <div className="relative w-full h-[380px] md:h-full rounded-[16px] overflow-hidden bg-black">
+        <div
+          className="relative w-full h-[380px] md:h-full rounded-[16px] overflow-hidden bg-black"
+          onClick={handleClick} // desktop click handler
+        >
           <video
             ref={videoRef}
             src="https://res.cloudinary.com/diqmmch5o/video/upload/v1757497702/lv_0_20250828142414_1_pkuphp.mp4"
@@ -143,16 +145,16 @@ const VideoShowcaseSection = ({ className }) => {
             playsInline
             controls
           />
+          {/* Play Icon Overlay for Desktop */}
           <img
             src={PlayIcon}
-            alt=""
-            className={`absolute left-20 md:left-40 inset-0 w-[50%] h-full object-contain pointer-events-none transition-opacity duration-300 ${
-              isPlaying ? "opacity-0" : "opacity-100"
+            alt="Play"
+            className={`hidden md:block absolute left-20 md:left-40 inset-0 w-[50%] h-full object-contain pointer-events-none transition-opacity duration-300 ${
+              isPlaying ? "opacity-100" : "opacity-0"
             }`}
           />
         </div>
       </div>
-
       {/* Text Content */}
       <div className="flex-1 text-white text-center md:text-left order-2 block md:hidden">
         <h3 className="text-lg sm:text-xl md:text-[24px] font-bold leading-snug mb-4">
