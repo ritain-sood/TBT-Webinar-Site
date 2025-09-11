@@ -8,11 +8,9 @@ function Root() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let timer;
-
     const handleLoad = () => {
-      // Keep loader for at least 2s after page load
-      timer = setTimeout(() => setLoading(false), 2000);
+      setLoading(false); // directly hide loader as soon as page is ready
+      // timer = setTimeout(() => setLoading(false), 2000);
     };
 
     if (document.readyState === "complete") {
@@ -22,7 +20,6 @@ function Root() {
     }
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("load", handleLoad);
     };
   }, []);
