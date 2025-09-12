@@ -15,17 +15,17 @@ const SuccessPage = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-[#212121] text-white px-4 text-center">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#FFC02B]">
-        🎉 Registeration Successful!
+        🎉 Registration Successful!
       </h1>
       <p className="text-lg md:text-xl mb-4">Thank you for securing your seat!</p>
       <p className="mb-8">Click below to join the exclusive WhatsApp group:</p>
       <a
-        href="https://chat.whatsapp.com/YOUR_GROUP_LINK_HERE"
+        href="https://whatsapp.com/channel/0029VafTVwG5fM5cIXuiz536"
         target="_blank"
         rel="noopener noreferrer"
         className="px-6 py-3 bg-[#FFC02B] text-[#212121] font-bold rounded-full hover:bg-yellow-400 transition-colors"
       >
-        Join WhatsApp Group Now
+        Join WhatsApp Community Now
       </a>
     </div>
   );
