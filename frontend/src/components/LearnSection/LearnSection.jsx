@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Laptop1 from "../../assets/images/Laptop1.png";
 import Laptop2 from "../../assets/images/Laptop2.png";
+import Img1 from "../../assets/images/ChartImg.jpeg";
+import Img2 from "../../assets/images/PathImg.jpeg";
 
 // --- INLINE SVG for Carousel Arrows ---
 const ChevronLeft = (props) => (
@@ -42,7 +44,7 @@ const learnItems = [
     title: "Consistent Trading Routine",
     description:
       "Learn the step-by-step process Institutes follow every day — clear entries, disciplined exits, and a simple structure that removes guesswork and builds long-term consistency.",
-    image: Laptop1,
+    image: Img1,
   },
   {
     title: "The Discipline of Risk Control",
@@ -54,7 +56,7 @@ const learnItems = [
     title: "Mind Over Markets",
     description:
       "The hardest part of trading isn’t reading charts — it’s controlling your own mind. Learn how to master fear, greed, and doubt, and build the discipline that keeps traders consistent for life.",
-    image: Laptop1,
+    image: Img2,
   },
   {
     title: "Chart Reading Secrets",
@@ -72,7 +74,7 @@ const LearnCard = ({ title, description, image, index, inverted = false }) => {
         inverted ? "md:flex-row-reverse" : ""
       } bg-[#1E1E1E] rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.02]`}
     >
-      <div className="relative md:w-1/2">
+      <div className="relative md:w-1/2  h-[240px]">
         <img
           src={image}
           alt={title}
@@ -80,13 +82,13 @@ const LearnCard = ({ title, description, image, index, inverted = false }) => {
         />
         <span
           className={`absolute bottom-2 text-5xl font-bold text-gray-400/20 
-      ${inverted ? "left-2" : "right-2"}`}
+      ${inverted ? "left-2" : "right-0"}`}
         >
           {index < 10 ? `0${index}` : index}
         </span>
       </div>
       <div className="md:w-1/2 flex flex-col justify-center gap-2">
-        <h3 className="text-lg sm:text-xl font-bold text-white uppercase mb-3">
+        <h3 className="text-xl sm:text-xl font-bold text-white uppercase mb-3">
           {title}
         </h3>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
