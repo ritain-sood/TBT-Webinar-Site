@@ -84,11 +84,11 @@
 
 // export default VideoShowcaseSection;
 
-import React, { useState, useRef } from "react";
-import PlayIcon from "../../assets/icons/Play.svg";
+import React, {  useState,useRef } from "react";
+// import PlayIcon from "../../assets/icons/Play.svg";
 
 const VideoShowcaseSection = ({ className }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
   // Desktop click to toggle play
@@ -147,13 +147,13 @@ const VideoShowcaseSection = ({ className }) => {
             poster="https://res.cloudinary.com/diqmmch5o/video/upload/so_39.5/v1757497702/lv_0_20250828142414_1_pkuphp.jpg"
           />
           {/* Play Icon Overlay for Desktop */}
-          <img
+          {/* <img
             src={PlayIcon}
             alt="Play"
             className={`hidden md:block absolute left-20 md:left-40 inset-0 w-[50%] h-full object-contain pointer-events-none transition-opacity duration-300 ${
-              isPlaying ? "opacity-100" : "opacity-0"
+              isPlaying ? "opacity-0" : "opacity-100"
             }`}
-          />
+          /> */}
         </div>
       </div>
       {/* Text Content */}
